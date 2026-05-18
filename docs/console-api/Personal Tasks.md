@@ -40,3 +40,40 @@ curl -X POST "https://api.syncless.ai/api/console/v1/personal-tasks" \
     { "type": "text", "text": "Draft a launch checklist." }
   ]'
 ```
+
+### TypeScript
+
+```ts
+const res = await fetch(
+  "https://api.syncless.ai/api/console/v1/personal-tasks",
+  {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer <api_key>",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([
+      { type: "text", text: "Draft a launch checklist." },
+    ]),
+  }
+);
+const data = await res.json();
+console.log(data.task);
+```
+
+### Python
+
+```py
+import requests
+
+res = requests.post(
+    "https://api.syncless.ai/api/console/v1/personal-tasks",
+    headers={
+        "Authorization": "Bearer <api_key>",
+        "Content-Type": "application/json",
+    },
+    json=[{"type": "text", "text": "Draft a launch checklist."}],
+)
+data = res.json()
+print(data["task"])
+```
