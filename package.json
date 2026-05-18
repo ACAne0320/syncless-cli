@@ -6,7 +6,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "syncless": "./dist/cli.js"
+    "syncless": "dist/cli.js"
   },
   "files": [
     "dist"
