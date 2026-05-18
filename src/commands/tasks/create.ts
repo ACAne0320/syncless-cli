@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { client, printJson, printSuccess } from "../../core/index.js";
+import { client, printError, printJson, printSuccess } from "../../core/index.js";
 import type {
   CreatePersonalTaskResponse,
   CreateProjectTaskRequest,
@@ -45,6 +45,11 @@ export const tasksCreateCmd = new Command("create")
         );
       }
     } else {
+      if (opts.upstream) {
+        printError("--upstream requires --project");
+        process.exit(1);
+        return;
+      }
       const data = await client.post<CreatePersonalTaskResponse>(
         "/api/console/v1/personal-tasks",
         blocks,
