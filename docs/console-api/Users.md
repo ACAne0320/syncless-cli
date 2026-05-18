@@ -31,3 +31,29 @@ Authorization: Bearer <api_key>
 curl "https://api.syncless.ai/api/console/v1/users" \
   -H "Authorization: Bearer <api_key>"
 ```
+
+### TypeScript
+
+```ts
+const res = await fetch(
+  "https://api.syncless.ai/api/console/v1/users",
+  {
+    headers: { Authorization: "Bearer <api_key>" },
+  }
+);
+const data = await res.json();
+console.log(data.users);
+```
+
+### Python
+
+```py
+import requests
+
+res = requests.get(
+    "https://api.syncless.ai/api/console/v1/users",
+    headers={"Authorization": "Bearer <api_key>"},
+)
+data = res.json()
+print(data["users"])
+```

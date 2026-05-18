@@ -80,6 +80,18 @@ export interface CreatePersonalTaskResponse {
 
 // === Templates ===
 
+export interface Template {
+  id: string;
+  workspaceId: string;
+  createdByUserId: string;
+  name: string;
+  graph: unknown;
+}
+
+export interface ListTemplatesResponse {
+  templates: Template[];
+}
+
 export interface CreateProjectFromTemplateRequest {
   name: string;
   nodes: Record<string, string>;
@@ -90,6 +102,18 @@ export interface CreateProjectFromTemplateResponse {
   pipelineId: string;
   tasks: unknown[];
   taskDependencies: unknown[];
+}
+
+// === Create Project Task ===
+
+export interface CreateProjectTaskRequest {
+  blocks: ContentBlock[];
+  upstream_task_id?: string;
+}
+
+export interface CreateProjectTaskResponse {
+  ok: boolean;
+  task: Task & { upstreamTaskId?: string };
 }
 
 // === Users ===

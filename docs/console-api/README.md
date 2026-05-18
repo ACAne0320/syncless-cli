@@ -23,3 +23,22 @@ Authenticate every HTTP request with the Authorization: Bearer <api_key> header.
 ```
 Authorization: Bearer <api_key>
 ```
+
+## Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/api/console/v1/projects` | [List projects](Projects.md) |
+| `GET` | `/api/console/v1/projects/<id>/tasks` | [List tasks](Tasks.md) |
+| `POST` | `/api/console/v1/projects/<id>/tasks` | [Create a project task](Tasks.md#create-a-project-task) |
+| `GET` | `/api/console/v1/tasks/<id>` | [Get a task](Tasks.md) |
+| `GET` | `/api/console/v1/tasks/<id>/messages` | [List task messages](Tasks.md) |
+| `POST` | `/api/console/v1/tasks/<id>/send` | [Send a prompt](Tasks.md) |
+| `POST` | `/api/console/v1/personal-tasks` | [Create a personal task](Personal%20Tasks.md) |
+| `GET` | `/api/console/v1/templates` | [List templates](Templates.md) |
+| `POST` | `/api/console/v1/templates/<id>/projects` | [Create project from template](Templates.md) |
+| `GET` | `/api/console/v1/users` | [List workspace users](Users.md) |
+
+## Code examples
+
+Each endpoint page includes code examples in **cURL**, **TypeScript** (`fetch`), and **Python** (`requests`).
