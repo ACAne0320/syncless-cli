@@ -12,7 +12,7 @@ const program = new Command();
 program
   .name("syncless")
   .description("CLI for the Syncless Console API")
-  .version("0.0.1");
+  .version("0.0.2");
 
 program.addCommand(authCmd);
 program.addCommand(tasksCmd);
