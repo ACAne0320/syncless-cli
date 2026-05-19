@@ -1,12 +1,13 @@
 {
   "name": "syncless-cli",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "CLI for the Syncless Console API",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "syncless": "dist/cli.js"
+    "syncl": "dist/cli.js",
+    "syncless-cli": "dist/cli.js"
   },
   "files": [
     "dist"

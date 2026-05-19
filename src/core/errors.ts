@@ -20,7 +20,7 @@ export class SynclessError extends Error {
 }
 
 export class AuthError extends SynclessError {
-  constructor(message = "Authentication failed. Run `syncless auth login` to set your API key.") {
+  constructor(message = "Authentication failed. Run `syncl auth login` to set your API key.") {
     super(message, "AUTH_ERROR", 401);
     this.name = "AuthError";
   }

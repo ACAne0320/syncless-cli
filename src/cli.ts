@@ -10,9 +10,9 @@ import { usersCmd } from "./commands/users/index.js";
 const program = new Command();
 
 program
-  .name("syncless")
+  .name("syncl")
   .description("CLI for the Syncless Console API")
-  .version("0.0.2");
+  .version("0.1.0");
 
 program.addCommand(authCmd);
 program.addCommand(tasksCmd);
