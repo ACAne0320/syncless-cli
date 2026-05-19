@@ -31,7 +31,7 @@ describe("AuthError", () => {
     const err = new AuthError();
     expect(err.code).toBe("AUTH_ERROR");
     expect(err.status).toBe(401);
-    expect(err.message).toContain("syncless auth login");
+    expect(err.message).toContain("syncl auth login");
   });
 });
 

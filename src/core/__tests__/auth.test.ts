@@ -12,7 +12,7 @@ const { requireApiKey } = await import("../auth.js");
 describe("requireApiKey", () => {
   it("throws AuthError when no key is set", () => {
     mockGetApiKey.mockReturnValue(undefined);
-    expect(() => requireApiKey()).toThrow("syncless auth login");
+    expect(() => requireApiKey()).toThrow("syncl auth login");
   });
 
   it("returns the key when set", () => {

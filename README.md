@@ -10,33 +10,36 @@ npm install -g syncless-cli
 
 Requires Node.js 18 or newer.
 
+The package registers `syncl` as the primary command and `syncless-cli` as a
+verbose alias.
+
 ## Quickstart
 
 ```sh
-syncless --help
+syncl --help
 
-syncless auth login
-syncless auth status
+syncl auth login
+syncl auth status
 
-syncless projects list
+syncl projects list
 
 # personal tasks
-syncless tasks list personal
-syncless tasks create "Draft a launch checklist"
+syncl tasks list personal
+syncl tasks create "Draft a launch checklist"
 
 # project tasks
-syncless tasks list <project-id>
-syncless tasks send <task-id> "Continue with the implementation plan"
+syncl tasks list <project-id>
+syncl tasks send <task-id> "Continue with the implementation plan"
 
-syncless tasks history <task-id>
+syncl tasks history <task-id>
 
-syncless users list
+syncl users list
 ```
 
 Read commands support JSON output:
 
 ```sh
-syncless projects list --json
-syncless tasks list personal --json
-syncless users list --json
+syncl projects list --json
+syncl tasks list personal --json
+syncl users list --json
 ```
