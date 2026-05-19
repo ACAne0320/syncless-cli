@@ -1,5 +1,3 @@
-import readline from "node:readline";
-import { Writable } from "node:stream";
 import { InvalidArgumentError } from "commander";
 import { printError, SynclessError } from "../core/index.js";
 
@@ -13,21 +11,6 @@ interface IntegerOption {
   max?: number;
   min?: number;
   name: string;
-}
-
-class HiddenPromptOutput extends Writable {
-  muted = false;
-
-  override _write(
-    chunk: Buffer,
-    encoding: BufferEncoding,
-    callback: (error?: Error | null) => void,
-  ): void {
-    if (!this.muted) {
-      process.stdout.write(chunk, encoding);
-    }
-    callback();
-  }
 }
 
 export function runCommand<Args extends unknown[]>(
@@ -101,26 +84,4 @@ export function parseStringRecordOption(name: string) {
 
     return parsed as Record<string, string>;
   };
-}
-
-export async function promptHidden(query: string): Promise<string> {
-  if (!process.stdin.isTTY) {
-    throw new SynclessError("API key is required in non-interactive mode.");
-  }
-
-  const output = new HiddenPromptOutput();
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output,
-    terminal: true,
-  });
-
-  return await new Promise<string>((resolve) => {
-    rl.question(query, (answer) => {
-      rl.close();
-      process.stdout.write("\n");
-      resolve(answer.trim());
-    });
-    output.muted = true;
-  });
 }

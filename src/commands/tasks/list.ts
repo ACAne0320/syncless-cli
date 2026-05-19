@@ -6,6 +6,7 @@ import {
   printError,
 } from "../../core/index.js";
 import type { ListTasksResponse, ListProjectsResponse } from "../../types/index.js";
+import { canPrompt, promptSelect } from "../prompts.js";
 import { parseIntegerOption, runCommand } from "../utils.js";
 
 interface TasksListOptions {
@@ -41,23 +42,34 @@ export const tasksListCmd = new Command("list")
         "/api/console/v1/projects",
       );
 
-      if (opts.json) {
-        printJson(data);
+      if (canPrompt(opts)) {
+        projectId = await promptSelect("Select a project", [
+          { label: "Personal tasks", value: "personal" },
+          ...data.projects.map((p) => ({
+            label: p.name,
+            value: p.projectId,
+          })),
+        ]);
+      } else {
+        if (opts.json) {
+          printJson(data);
+          process.exit(1);
+        }
+
+        console.log("Available projects:\n");
+
+        const rows = [
+          ["personal", "Personal tasks"],
+          ...data.projects.map((p) => [p.projectId, p.name]),
+        ];
+
+        printTable(["Project ID", "Name"], rows);
+
+        console.log('\nUse "personal" as project-id to list personal tasks.');
+        printError("missing required argument 'project-id'");
         process.exit(1);
+        return;
       }
-
-      console.log("Available projects:\n");
-
-      const rows = [
-        ["personal", "Personal tasks"],
-        ...data.projects.map((p) => [p.projectId, p.name]),
-      ];
-
-      printTable(["Project ID", "Name"], rows);
-
-      console.log('\nUse "personal" as project-id to list personal tasks.');
-      printError("missing required argument 'project-id'");
-      process.exit(1);
     }
 
     const query = new URLSearchParams({

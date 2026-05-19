@@ -1,6 +1,6 @@
 {
   "name": "syncless-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI for the Syncless Console API",
   "type": "module",
   "main": "./dist/index.js",
@@ -36,6 +36,7 @@
   "license": "MIT",
   "packageManager": "pnpm@9.15.4",
   "dependencies": {
+    "@clack/prompts": "^1.4.0",
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
     "conf": "^13.1.0",
@@ -48,6 +49,6 @@
     "vitest": "^3.1.3"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.12.0"
   }
 }

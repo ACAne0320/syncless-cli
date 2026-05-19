@@ -5,13 +5,14 @@ import {
   printSuccess,
   SynclessError,
 } from "../../core/index.js";
-import { promptHidden, runCommand } from "../utils.js";
+import { promptPassword } from "../prompts.js";
+import { runCommand } from "../utils.js";
 
 export const loginCmd = new Command("login")
   .description("Store your Syncless Console API key")
   .argument("[api-key]", "Your Syncless API key")
   .action(runCommand(async (apiKey?: string) => {
-    const key = apiKey?.trim() || await promptHidden("Syncless API key: ");
+    const key = apiKey?.trim() || await promptPassword("Syncless API key");
     if (!key) {
       throw new SynclessError("API key is required.");
     }
