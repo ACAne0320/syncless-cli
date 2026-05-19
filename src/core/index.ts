@@ -6,4 +6,4 @@ export {
   AuthError,
   TaskRunningError,
 } from "./errors.js";
-export { printJson, printError, printSuccess, printTable } from "./output.js";
+export { formatDate, printJson, printError, printSuccess, printTable } from "./output.js";

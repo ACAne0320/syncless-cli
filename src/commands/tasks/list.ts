@@ -78,7 +78,7 @@ export const tasksListCmd = new Command("list")
         return;
       }
       printTable(
-        ["ID", "Title"],
+        ["Task ID", "Title"],
         data.tasks.map((t) => [t.id, t.title]),
       );
     }

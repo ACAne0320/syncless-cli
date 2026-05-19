@@ -43,7 +43,7 @@ export const templatesListCmd = new Command("list")
         return;
       }
       printTable(
-        ["ID", "Name"],
+        ["Template ID", "Name"],
         data.templates.map((t) => [t.id, t.name]),
       );
     }

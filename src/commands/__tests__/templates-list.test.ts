@@ -49,7 +49,7 @@ describe("templatesListCmd", () => {
       }),
     );
     expect(mockPrintTable).toHaveBeenCalledWith(
-      ["ID", "Name"],
+      ["Template ID", "Name"],
       [["tpl-1", "Launch checklist"]],
     );
   });

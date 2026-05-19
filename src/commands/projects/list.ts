@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { client, printJson, printTable } from "../../core/index.js";
+import { client, formatDate, printJson, printTable } from "../../core/index.js";
 import type { ListProjectsResponse } from "../../types/index.js";
 import { parseIntegerOption, runCommand } from "../utils.js";
 
@@ -43,12 +43,12 @@ export const projectsListCmd = new Command("list")
         return;
       }
       printTable(
-        ["ID", "Name", "Created", "Updated"],
+        ["Project ID", "Name", "Created", "Updated"],
         data.projects.map((p) => [
           p.projectId,
           p.name,
-          p.createdAt,
-          p.updatedAt,
+          formatDate(p.createdAt),
+          formatDate(p.updatedAt),
         ]),
       );
     }
